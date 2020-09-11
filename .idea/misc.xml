@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/fun/hello-scala" value="PREVIEW" />
+        <entry key="$USER_HOME$/projects/android-courier-app" value="PREVIEW" />
+        <entry key="$USER_HOME$/projects/android-courier-data" value="PREVIEW" />
+        <entry key="$USER_HOME$/projects/android-courier-widget" value="PREVIEW" />
+        <entry key="$USER_HOME$/projects/cats-sandbox" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ScalaSbtSettings">
+    <option name="customVMPath" />
+  </component>
+</project>
