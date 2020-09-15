@@ -1,8 +1,19 @@
 # reframe-middleware: the ‘action first’ approach to redux
 ### Reframe-middleware is an alternative way of handling actions in redux.dart, inspired by Clojurescript’s [Re-frame](https://github.com/day8/re-frame). 
 
+### Flutter Demo app [here](https://github.com/pianostringquartet/reframe-middleware-sample-app).
 
 # How to use
+
+### Step #0: Add `reframe_middleware` to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  reframe_middleware: ^1.0.0
+``` 
+
+(Be sure to `pub get` or `flutter pub get`!)
+
 ### Step #1: Add `reframeReducer` and `reframeMiddleware` to your redux.dart `Store`:
 
 ```dart
