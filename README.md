@@ -3,6 +3,8 @@
 
 ### Flutter Demo app [here](https://github.com/pianostringquartet/reframe-middleware-sample-app).
 
+### View on Pub.dev [here](https://pub.dev/packages/reframe_middleware).
+
 # How to use
 
 ### Step #0: Add `reframe_middleware` to your `pubspec.yaml`:
