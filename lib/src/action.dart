@@ -2,19 +2,11 @@ import 'package:meta/meta.dart';
 
 import 'middleware.dart';
 
-/* A Redux 'Action' is a Reframe 'Event'.
- Every Event must have a 'handler', where we describe the
- state-change and side-effects produced by the Event.*/
-//@immutable
-//abstract class Event {
-//  const Event();
-//
-//  ReframeResponse<AppState> handle(AppState state, Effects effects);
-//}
-
+/* Every action must have a 'handler', where we describe the
+ state-change and side-effects produced by the action.*/
 @immutable
-abstract class Event<S, E> {
-  const Event();
+abstract class ReframeAction<S, E> {
+  const ReframeAction();
 
   ReframeResponse<S> handle(S state, E effects);
 }
@@ -29,8 +21,8 @@ class StateUpdate<S> {
 }
 
 /* UTILITY AND HELPERS
-
-Often we want to work with some sub-state, rather than the entire application state.
+Often we want to work with some sub-state,
+rather than the entire application state.
 * */
 typedef Handler<T, E> = ReframeResponse<T> Function(T, E);
 
@@ -61,10 +53,10 @@ mixin CounterHandlerWrapper implements HandlerWrapper<AppState, CounterState> {
           (CounterState counterState) => state.copy(counter: counterState));
 }
 
-// (2) Add the mixin to the Event and use the mixin's method:
+// (2) Add the mixin to the ReframeAction and use the mixin's method:
 
 @immutable
-class IncrementEvent extends Event<AppState> with CounterHandlerWrapper {
+class IncrementEvent extends ReframeAction<AppState> with CounterHandlerWrapper {
   @override
   ReframeResponse<AppState> handle(AppState state) =>
       handlerWrapper(

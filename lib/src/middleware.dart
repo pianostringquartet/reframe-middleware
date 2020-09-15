@@ -4,12 +4,12 @@ import 'package:quiver/core.dart';
 import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
-import 'event.dart';
+import 'action.dart';
 
 // A side-effect asynchronously resolves to a list of additional Events.
-typedef SideEffect = Future<List<Event>> Function();
+typedef SideEffect = Future<List<ReframeAction>> Function();
 
-Future<List<Event>> noEffect() async => [];
+Future<List<ReframeAction>> noEffect() async => [];
 
 // A HandlerResponse is a description of how the app changes due to an event,
 // i.e. (1) how the state changes and/or (2) which side-effects to run.
@@ -59,7 +59,7 @@ typedef Middleware<S> = void Function(Store<S>, dynamic, NextDispatcher);
  returned by an event's handler. */
 Middleware<S> reframeMiddleware<S, E>(E effects) =>
     (Store<S> store, dynamic event, NextDispatcher next) {
-      if (event is Event) {
+      if (event is ReframeAction) {
         event.handle(store.state, effects)
           ..nextState
               // StateUpdate will bring the new-state to the reframe-style reducer

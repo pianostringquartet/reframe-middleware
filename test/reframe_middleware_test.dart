@@ -10,32 +10,34 @@ class Effects {}
 
 // Defining sync and async events for our reframe reducer+middleware.
 @immutable
-class IncrementEvent extends Event<int, Effects> {
+class IncrementAction extends ReframeAction<int, Effects> {
   @override
   ReframeResponse<int> handle(int state, Effects effects) =>
       ReframeResponse.stateUpdate(state + 1);
 }
 
 @immutable
-class AsyncIncrementEvent extends Event<int, Effects> {
+class AsyncIncrementAction extends ReframeAction<int, Effects> {
   final Duration waitTime;
 
-  const AsyncIncrementEvent(this.waitTime);
+  const AsyncIncrementAction(this.waitTime);
 
   @override
   ReframeResponse<int> handle(int state, Effects effects) =>
       ReframeResponse.sideEffect(() =>
           Future.delayed(waitTime)
-              .then((_) => [IncrementEvent()]));
+              .then((_) => [IncrementAction()]));
 }
 
+
 void main() {
+  // simple tests to show the sync and async logic work
   group('ReframeReducer and ReframeMiddleware can handle', () {
-    // simple tests to show the sync and async logic work
+
     test('pure, synchronous action', () {
       final store = Store<int>(reframeReducer,
           initialState: 0, middleware: [reframeMiddleware(Effects())]);
-      store.dispatch(IncrementEvent());
+      store.dispatch(IncrementAction());
       expect(store.state, equals(1));
     });
 
@@ -46,7 +48,7 @@ void main() {
       final waitTime = Duration(milliseconds: 1000);
 
       expect(store.state, equals(0));
-      store.dispatch(AsyncIncrementEvent(waitTime));
+      store.dispatch(AsyncIncrementAction(waitTime));
 
       await Future.delayed(waitTime);
 
