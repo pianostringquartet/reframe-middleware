@@ -1,5 +1,5 @@
-# reframe-middleware: the ‘action first’ approach to redux.dart
-### Reframe-middleware is an alternative way of handling actions in redux.dart, inspired by Clojurescript’s Re-frame](https://github.com/day8/re-frame). 
+# reframe-middleware: the ‘action first’ approach to redux
+### Reframe-middleware is an alternative way of handling actions in redux.dart, inspired by Clojurescript’s [Re-frame](https://github.com/day8/re-frame). 
 
 
 # How to use
@@ -254,9 +254,9 @@ abstract class Action {
 As we saw above, re-frame uses a single middleware whose only responsibility is to call `action.handle` and run the state changes and side-effects described in  the handler response. 
 
 
-### Traditional redux: actions must be manually connected to reducer(s)/middleware(s) in a verbose, error-prone manner
+## Traditional redux: actions must be manually connected to reducer(s)/middleware(s) in a verbose, error-prone manner
 
-An action is not bound to any given reducer or middleware; we have to manually connect them (e.g. `switch`, `if-else`, `TypedReducer` etc.) and write a test to ensure an actin is being consumed.
+An action is not bound to any given reducer or middleware; we have to manually connect them (e.g. `switch`, `if-else`, `TypedReducer` etc.) and write a test to ensure an action is being consumed.
 
 Consider a common way of matching a redux action to its reducer and/or middleware(s):
 
@@ -317,6 +317,5 @@ Reducer<List<String>> itemsReducer = combineReducers<List<String>>([
 ```
 
 (Note the justification in the comment in the above code — if the goal is to quickly identify ‘which reducer handles which action’, isn’t it better to just have action-handlers?)
-
 
 
