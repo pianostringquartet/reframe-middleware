@@ -161,11 +161,11 @@ Short answer: Yes.
 
 Long answer: 
 
-Dan has made several arguments (e.g. [here](https://github.com/pitzcarraldo/reduxible/issues/8#issue-124545582) and [here](https://github.com/reduxjs/redux/issues/1167#issuecomment-166641977)). 
+Dan has made several objections to a ‘one-to-one mapping between actions and reducers’ (e.g. [here](https://github.com/pitzcarraldo/reduxible/issues/8#issue-124545582) and [here](https://github.com/reduxjs/redux/issues/1167#issuecomment-166641977)).
 
-The most often-cited concern appears to be about scale ([“big teams can work on overlapping features without constant merge conflicts”](https://github.com/reduxjs/redux/issues/1167#issuecomment-166641977)). 
+The most often-cited concern appears to be about scale (e.g. [“big teams can work on overlapping features without constant merge conflicts”](https://github.com/reduxjs/redux/issues/1167#issuecomment-166641977)). 
 
-This suspiciously appeals to outside contingencies to justify what is presented as a fundamental feature of redux ([“The whole point of Flux/Redux is to decouple actions and reducers”](https://github.com/reduxjs/redux/issues/1167)).
+This appeals to outside contingencies to justify what is presented as a fundamental feature of redux ([“The whole point of Flux/Redux is to decouple actions and reducers”](https://github.com/reduxjs/redux/issues/1167)).
 
 In contrast, Clojurescript’s re-frame has broader way of thinking about why your app looks the way it does, how it can change and — most importantly — *why* it changes.
 
@@ -174,7 +174,6 @@ That is, re-frame couples an action and its state-changes and side-effects *beca
 ([This part of the re-frame Readme](http://day8.github.io/re-frame/a-loop/) is worth reading, even if you never use Clojurescript or re-frame.)
 
 See ‘Motivation’ below for a longer explanation and for code comparisons of re-frame vs. traditional redux.
-
 
 ****
 
