@@ -135,7 +135,7 @@ Middleware<S> reframeMiddleware<S, E>(E effects) =>
 
 
 // reducer
-AppState reframeReducer<S>(AppState state, dynamic event) =>
+S reframeReducer<S>(S state, dynamic event) =>
     event is StateUpdate ? event.state : state;
 ```
 
