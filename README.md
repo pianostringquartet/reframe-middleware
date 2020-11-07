@@ -110,6 +110,34 @@ typedef SideEffect = Future<List<Action>> Function();
 Future<List<Action>> noEffect() async => [];
 ```
 
+For state updates, `reframeMiddleware` dispatches a special action `StateUpdate` to carry the new state to the `reframeReducer`.
+
+For side-effects, `reframeMiddleware` runs the Future and dispatches the resulting actions.
+
+```dart
+// middleware
+Middleware<S> reframeMiddleware<S, E>(E effects) =>
+    (Store<S> store, dynamic event, NextDispatcher next) {
+      if (event is ReframeAction) {
+        event.handle(store.state, effects)
+            // sends new state to reducer via StateUpdate action
+          ..nextState
+              .ifPresent((newState) => store.dispatch(StateUpdate(newState)))
+           // runs side effects and dispatch resulting actions:
+          ..effect().then((events) => events.forEach(store.dispatch));
+      }
+
+      // passes (1) the event to next middleware (e.g. 3rd party middleware)
+      // and (2) a StateUpdate to the reducer
+      next(event);
+    };
+
+
+// reducer
+AppState reframeReducer<S>(AppState state, dynamic event) =>
+    event is StateUpdate ? event.state : state;
+```
+
 ****
 
 # FAQ
