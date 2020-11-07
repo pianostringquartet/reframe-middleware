@@ -53,7 +53,7 @@ import 'package:reframe_middleware';
 @immutable
 class AsyncIncrementAction extends ReframeAction {
   @override
-  ReframeResponse<int> handle(AppState state) =>
+  ReframeResponse<AppState> handle(AppState state) =>
       ReframeResponse.sideEffect(() =>
           Future.delayed(Duration(milliseconds: 1000))
               .then((_) => [IncrementEvent()]));
@@ -109,7 +109,6 @@ class ReframeResponse<S> {
 typedef SideEffect = Future<List<Action>> Function();
 Future<List<Action>> noEffect() async => [];
 ```
-
 
 ****
 
