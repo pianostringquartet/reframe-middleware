@@ -1,11 +1,12 @@
 # reframe-middleware: the ‘action first’ approach to redux
+
 ### Reframe-middleware makes actions first class in redux.dart. 
+
+![pub package](https://img.shields.io/pub/v/reframe_middleware.svg)
 
 Inspired by Clojurescript's [re-frame](https://github.com/day8/re-frame). 
 
 [Flutter demo](https://github.com/pianostringquartet/reframe-middleware-sample-app).
-
-[Pub.dev](https://pub.dev/packages/reframe_middleware).
 
 ## How to use
 
